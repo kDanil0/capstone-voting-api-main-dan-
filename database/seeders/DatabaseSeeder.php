@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PartListSeeder::class,
             CandidateSeeder::class,
+            TokenOTPSeeder::class,
         ]);
     }
 }

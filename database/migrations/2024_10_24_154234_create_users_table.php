@@ -16,16 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
-            //$table->string('section');
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
-            //$table->string('contact_no')->nullable();
             $table->string('email')->unique()->nullable();
-            // $table->timestamp('email_verified_at')->nullable(); //isVerified
-            // //$table->string('password');
-            // $table->rememberToken();
-            // //device ID
-            // $table->string('device_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -34,14 +27,14 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
         });
 
-        // Schema::create('sessions', function (Blueprint $table) {
-        //     $table->string('id')->primary();
-        //     $table->foreignId('user_id')->nullable()->index();
-        //     $table->string('ip_address', 45)->nullable();
-        //     $table->text('user_agent')->nullable();
-        //     $table->longText('payload');
-        //     $table->integer('last_activity')->index();
-        // });
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
     }
 
     /**
